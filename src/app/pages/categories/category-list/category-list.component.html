@@ -1,3 +1,65 @@
-<p>
-  category-list works!
-</p>
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+    <li class="breadcrumb-item active">Categorias</li>
+  </ol>
+</nav>
+
+<div class="row mb-4">
+  <div class="col-md">
+    <h2 class="h2 border-left pl-2">Categorias</h2>
+  </div>
+  <div class="col-md text-right">
+    <a
+      name="plusCategory"
+      class="btn btn-success"
+      routerLink="new"
+      role="button"
+      >+ Nova Categoria</a
+    >
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr class="bg-primary text-light">
+      <th>Categorias</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row">
+        <strong>Lazer</strong>
+        <br />
+        <small>Cinema, parque, praia e etc.</small>
+      </td>
+      <td>
+        <a [routerLink]="[1]" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+        <a (click)="alert('excluir')" class="btn btn-outline-danger btn-sm">Delete</a>
+      </td>
+    </tr>
+    <tr>
+      <td scope="row">
+        <strong>Lazer</strong>
+        <br />
+        <small>Cinema, parque, praia e etc.</small>
+      </td>
+      <td>
+        <a [routerLink]="[1]" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+        <a (click)="alert('excluir')" class="btn btn-outline-danger btn-sm">Delete</a>
+      </td>
+    </tr>
+    <tr>
+      <td scope="row">
+        <strong>Lazer</strong>
+        <br />
+        <small>Cinema, parque, praia e etc.</small>
+      </td>
+      <td>
+        <a [routerLink]="[1]" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+        <a (click)="alert('excluir')" class="btn btn-outline-danger btn-sm">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
