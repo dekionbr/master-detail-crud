@@ -2,13 +2,13 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
     <li class="breadcrumb-item active"><a routerLink="/categories">Home</a></li>
-    <li class="breadcrumb-item active">Formulário de Categoria</li>
+    <li class="breadcrumb-item active">{{ pageTitle }}</li>
   </ol>
 </nav>
 
 <div class="row mb-4">
   <div class="col-md">
-    <h2 class="h2 border-left pl-2">Formulário de Categoria</h2>
+    <h2 class="h2 border-left pl-2">{{ pageTitle }}</h2>
   </div>
   <div class="col-md text-right">
     <a class="btn btn-light" routerLink="/categories" role="button">
@@ -17,7 +17,7 @@
   </div>
 </div>
 
-<form [formGroup]="categoryForm">
+<form [formGroup]="categoryForm" (submit)="submitForm()">
   <div class="card">
     <div class="card-header">
       Informações sobre a categoria
@@ -32,7 +32,22 @@
             id=""
             class="form-control"
             placeholder="Nome"
+            formControlName="name"
           />
+          <div
+            class="text-danger"
+            *ngIf="
+              categoryForm.get('name').invalid &&
+              categoryForm.get('name').touched
+            "
+          >
+            <div *ngIf="categoryForm.get('name').errors.required">
+              dado obrigatório
+            </div>
+            <div *ngIf="categoryForm.get('name').errors.minlength">
+              deve ter no mínimo 2 caracteres
+            </div>
+          </div>
         </div>
         <div class="form-group col-sm-8">
           <label for="description">Descrição</label>
@@ -42,12 +57,17 @@
             id="description"
             class="form-control"
             placeholder="descrição"
+            formControlName="description"
           />
         </div>
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary btn-lg float-right mt-3">
+  <button
+    [disabled]="submittingForm || categoryForm.invalid"
+    type="submit"
+    class="btn btn-primary btn-lg float-right mt-3"
+  >
     Salvar
   </button>
 </form>
